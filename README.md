@@ -18,4 +18,19 @@
 'password' => env('MONGO_DB_PASSWORD'),  
 'options' => []  
 ],
-1.
+1. do: composer require jenssegers/mongodb
+1. add: Jenssegers\Mongodb\MongodbServiceProvider::class in config/app/php
+1. change User model:  
+use Illuminate\Notifications\Notifiable;  
+use Jenssegers\Mongodb\Auth\User as Authenticatable;  
+
+class User extends Authenticatable {   
+use Notifiable;  
+protected $connection = 'mongodb';
+1. change other models
+1. as mongodb do not have bigIncrements or unsinged etc,  
+change the table to something like this:  
+__$table->index('id');  
+$table->unique('email');__
+1. change ->id to ->_id
+1. when using relation to create data in table, do not call the other table directly but do create method and make the user_id = _id
