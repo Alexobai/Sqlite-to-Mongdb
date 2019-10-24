@@ -1,6 +1,6 @@
 # Sqlite-to-Mongdb
 
-1. edit .env file:/
+1. edit .env file: /
   DB_CONNECTION = mongodb 
   MONGO_DB_HOST=127.0.0.1 
   MONGO_DB_PORT=27017
